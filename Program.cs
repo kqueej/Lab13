@@ -116,20 +116,51 @@
 //     }
 // }
 
-int[] numbers = { 10, 20, 30, 40, 50 };
+
+// Self 1
+// int[] numbers = { 10, 20, 30, 40, 50 };
+
+// try
+// {
+//     Console.Write("Enter array index (0-4): ");
+//     int index = int.Parse(Console.ReadLine()!);
+
+//     Console.WriteLine($"Value: {numbers[index]}");
+// }
+// catch (FormatException)
+// {
+//     Console.WriteLine("Error: Invalid index format.");
+// }
+// catch (IndexOutOfRangeException)
+// {
+//     Console.WriteLine("Error: Index is outside the array bounds.");
+// }
+
+// Self 2
 
 try
 {
-    Console.Write("Enter array index (0-4): ");
-    int index = int.Parse(Console.ReadLine()!);
+    Console.Write("Enter age: ");
+    int age = int.Parse(Console.ReadLine()!);
 
-    Console.WriteLine($"Value: {numbers[index]}");
+    CheckAge(age);
+
+    Console.WriteLine("Age is valid.");
 }
 catch (FormatException)
 {
-    Console.WriteLine("Error: Invalid index format.");
+    Console.WriteLine("Error: Invalid age format.");
 }
-catch (IndexOutOfRangeException)
+catch (ArgumentException ex)
 {
-    Console.WriteLine("Error: Index is outside the array bounds.");
+    Console.WriteLine($"Error: {ex.Message}");
+}
+
+void CheckAge(int age)
+{
+    if (age < 0 || age > 120)
+    {
+        throw new ArgumentException(
+            "Age must be between 0 and 120.");
+    }
 }
