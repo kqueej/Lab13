@@ -138,29 +138,30 @@
 
 // Self 2
 
-try
-{
-    Console.Write("Enter age: ");
-    int age = int.Parse(Console.ReadLine()!);
+// try
+// {
+//     Console.Write("Enter age: ");
+//     int age = int.Parse(Console.ReadLine()!);
 
-    CheckAge(age);
+//     CheckAge(age);
 
-    Console.WriteLine("Age is valid.");
-}
-catch (FormatException)
-{
-    Console.WriteLine("Error: Invalid age format.");
-}
-catch (ArgumentException ex)
-{
-    Console.WriteLine($"Error: {ex.Message}");
-}
+//     Console.WriteLine("Age is valid.");
+// }
+// catch (FormatException)
+// {
+//     Console.WriteLine("Error: Invalid age format.");
+// }
+// catch (ArgumentException ex)
+// {
+//     Console.WriteLine($"Error: {ex.Message}");
+// }
 
-void CheckAge(int age)
-{
-    if (age < 0 || age > 120)
-    {
-        throw new ArgumentException(
-            "Age must be between 0 and 120.");
-    }
-}
+// void CheckAge(int age)
+// {
+//     if (age < 0 || age > 120)
+//     {
+//         throw new ArgumentException(
+//             "Age must be between 0 and 120.");
+//     }
+// }
+
