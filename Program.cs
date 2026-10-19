@@ -64,54 +64,54 @@
 // {
 //     Console.WriteLine("И здесь finally тоже сработал");
 // }
-Console.WriteLine();
-Console.WriteLine("=== throw ===");
+// Console.WriteLine();
+// Console.WriteLine("=== throw ===");
 
-try
-{
-    double result = CalculateSquareRoot(-5);
-    Console.WriteLine(result);
-}
-catch (ArgumentException ex)
-{
-    Console.WriteLine($"Ошибка: {ex.Message}");
-}
+// try
+// {
+//     double result = CalculateSquareRoot(-5);
+//     Console.WriteLine(result);
+// }
+// catch (ArgumentException ex)
+// {
+//     Console.WriteLine($"Ошибка: {ex.Message}");
+// }
 
-double CalculateSquareRoot(double number)
-{
-    if (number < 0)
-    {
-        throw new ArgumentException("Число не может быть отрицательным");
-    }
-    return Math.Sqrt(number);
-}
+// double CalculateSquareRoot(double number)
+// {
+//     if (number < 0)
+//     {
+//         throw new ArgumentException("Число не может быть отрицательным");
+//     }
+//     return Math.Sqrt(number);
+// }
 
-Console.WriteLine();
-Console.WriteLine("=== Собственное исключение ===");
+// Console.WriteLine();
+// Console.WriteLine("=== Собственное исключение ===");
 
-try
-{
-    Withdraw(1000, 1500);
-}
-catch (NegativeBalanceException ex)
-{
-    Console.WriteLine($"Операция отклонена: {ex.Message}");
-}
+// try
+// {
+//     Withdraw(1000, 1500);
+// }
+// catch (NegativeBalanceException ex)
+// {
+//     Console.WriteLine($"Операция отклонена: {ex.Message}");
+// }
 
-Withdraw(1000, 400);
+// Withdraw(1000, 400);
 
-void Withdraw(double balance, double amount)
-{
-    if (amount > balance)
-    {
-        throw new NegativeBalanceException($"Недостаточно средств: на счёте {balance}, а нужно снять {amount}");
-    }
-    Console.WriteLine($"Снято {amount}, остаток {balance - amount}");
-}
+// void Withdraw(double balance, double amount)
+// {
+//     if (amount > balance)
+//     {
+//         throw new NegativeBalanceException($"Недостаточно средств: на счёте {balance}, а нужно снять {amount}");
+//     }
+//     Console.WriteLine($"Снято {amount}, остаток {balance - amount}");
+// }
 
-class NegativeBalanceException : Exception
-{
-    public NegativeBalanceException(string message) : base(message)
-    {
-    }
-}
+// class NegativeBalanceException : Exception
+// {
+//     public NegativeBalanceException(string message) : base(message)
+//     {
+//     }
+// }
