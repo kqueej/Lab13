@@ -35,32 +35,83 @@
 //     Console.WriteLine($"Непредвиденная ошибка: {ex.Message}");
 // }
 
+// Console.WriteLine();
+// Console.WriteLine("=== finally ===");
+
+// try
+// {
+//     Console.WriteLine("Пытаемся выполнить операцию...");
+//     int[] numbers = { 1, 2, 3 };
+//     Console.WriteLine(numbers[5]);
+// }
+// catch (IndexOutOfRangeException ex)
+// {
+//     Console.WriteLine($"Ошибка: {ex.Message}");
+// }
+// finally
+// {
+//     Console.WriteLine("Этот блок выполнится в любом случае");
+// }
+
+// Console.WriteLine();
+// Console.WriteLine("=== finally без ошибки ===");
+
+// try
+// {
+//     Console.WriteLine("Операция без ошибок");
+// }
+// finally
+// {
+//     Console.WriteLine("И здесь finally тоже сработал");
+// }
 Console.WriteLine();
-Console.WriteLine("=== finally ===");
+Console.WriteLine("=== throw ===");
 
 try
 {
-    Console.WriteLine("Пытаемся выполнить операцию...");
-    int[] numbers = { 1, 2, 3 };
-    Console.WriteLine(numbers[5]);
+    double result = CalculateSquareRoot(-5);
+    Console.WriteLine(result);
 }
-catch (IndexOutOfRangeException ex)
+catch (ArgumentException ex)
 {
     Console.WriteLine($"Ошибка: {ex.Message}");
 }
-finally
+
+double CalculateSquareRoot(double number)
 {
-    Console.WriteLine("Этот блок выполнится в любом случае");
+    if (number < 0)
+    {
+        throw new ArgumentException("Число не может быть отрицательным");
+    }
+    return Math.Sqrt(number);
 }
 
 Console.WriteLine();
-Console.WriteLine("=== finally без ошибки ===");
+Console.WriteLine("=== Собственное исключение ===");
 
 try
 {
-    Console.WriteLine("Операция без ошибок");
+    Withdraw(1000, 1500);
 }
-finally
+catch (NegativeBalanceException ex)
 {
-    Console.WriteLine("И здесь finally тоже сработал");
+    Console.WriteLine($"Операция отклонена: {ex.Message}");
+}
+
+Withdraw(1000, 400);
+
+void Withdraw(double balance, double amount)
+{
+    if (amount > balance)
+    {
+        throw new NegativeBalanceException($"Недостаточно средств: на счёте {balance}, а нужно снять {amount}");
+    }
+    Console.WriteLine($"Снято {amount}, остаток {balance - amount}");
+}
+
+class NegativeBalanceException : Exception
+{
+    public NegativeBalanceException(string message) : base(message)
+    {
+    }
 }
