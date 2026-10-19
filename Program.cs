@@ -12,25 +12,55 @@
 // }
 
 // Console.WriteLine("Программа продолжает работу как ни в чём не бывало");
-Console.WriteLine();
-Console.WriteLine("=== Несколько catch ===");
+// Console.WriteLine();
+// Console.WriteLine("=== Несколько catch ===");
 
-Console.Write("Введите делитель: ");
+// Console.Write("Введите делитель: ");
+// try
+// {
+//     int divisor = int.Parse(Console.ReadLine());
+//     int result = 100 / divisor;
+//     Console.WriteLine($"Результат: {result}");
+// }
+// catch (FormatException)
+// {
+//     Console.WriteLine("Ошибка: это не число");
+// }
+// catch (DivideByZeroException)
+// {
+//     Console.WriteLine("Ошибка: нельзя делить на ноль");
+// }
+// catch (Exception ex)
+// {
+//     Console.WriteLine($"Непредвиденная ошибка: {ex.Message}");
+// }
+
+Console.WriteLine();
+Console.WriteLine("=== finally ===");
+
 try
 {
-    int divisor = int.Parse(Console.ReadLine());
-    int result = 100 / divisor;
-    Console.WriteLine($"Результат: {result}");
+    Console.WriteLine("Пытаемся выполнить операцию...");
+    int[] numbers = { 1, 2, 3 };
+    Console.WriteLine(numbers[5]);
 }
-catch (FormatException)
+catch (IndexOutOfRangeException ex)
 {
-    Console.WriteLine("Ошибка: это не число");
+    Console.WriteLine($"Ошибка: {ex.Message}");
 }
-catch (DivideByZeroException)
+finally
 {
-    Console.WriteLine("Ошибка: нельзя делить на ноль");
+    Console.WriteLine("Этот блок выполнится в любом случае");
 }
-catch (Exception ex)
+
+Console.WriteLine();
+Console.WriteLine("=== finally без ошибки ===");
+
+try
 {
-    Console.WriteLine($"Непредвиденная ошибка: {ex.Message}");
+    Console.WriteLine("Операция без ошибок");
+}
+finally
+{
+    Console.WriteLine("И здесь finally тоже сработал");
 }
