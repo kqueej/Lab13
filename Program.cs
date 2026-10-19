@@ -115,3 +115,21 @@
 //     {
 //     }
 // }
+
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+try
+{
+    Console.Write("Enter array index (0-4): ");
+    int index = int.Parse(Console.ReadLine()!);
+
+    Console.WriteLine($"Value: {numbers[index]}");
+}
+catch (FormatException)
+{
+    Console.WriteLine("Error: Invalid index format.");
+}
+catch (IndexOutOfRangeException)
+{
+    Console.WriteLine("Error: Index is outside the array bounds.");
+}
